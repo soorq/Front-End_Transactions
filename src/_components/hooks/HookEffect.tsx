@@ -5,7 +5,7 @@ type TypeMouseCoord = {
     y?: number;
 };
 
-const HookEffect = () => {
+const HookEffect: React.FC = () => {
     const [valueMouse, setValueMouse] = React.useState<TypeMouseCoord>({});
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,8 +24,8 @@ const HookEffect = () => {
     }, [valueMouse]);
 
     return (
-        <div className="col-span-3 col-start-1 row-start-3 bg-black rounded-xl w-full h-full">
-            <div className="flex justify-center items-center w-full py-3 relative">
+        <div className="w-full h-full col-span-3 col-start-1 row-start-3 bg-black rounded-xl">
+            <div className="relative flex items-center justify-center w-full py-3">
                 <button onClick={e => handleClick(e)}>Click me</button>
             </div>
             <code className="text-center">

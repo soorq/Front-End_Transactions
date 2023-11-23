@@ -15,7 +15,7 @@ const HookState: React.FC = () => {
                 <code className="bg-emerald-300">
                     <pre>Your count is {value}</pre>
                 </code>
-                <div className="flex w-full justify-between mb-5">
+                <div className="flex justify-between w-full mb-5">
                     <button
                         className="button"
                         onClick={() => setCount(prev => prev + 1)}

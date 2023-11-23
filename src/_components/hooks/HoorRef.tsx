@@ -1,6 +1,6 @@
 import React from 'react';
 
-const HookRef = () => {
+const HookRef: React.FC = () => {
     const divEleme = React.useRef<HTMLDivElement | null>(null);
 
     const handleClickChange = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -22,7 +22,7 @@ const HookRef = () => {
     }, []);
 
     return (
-        <div className="col-span-3 col-start-1 w-full h-full relative row-start-5 rounded-xl bg-violet-400">
+        <div className="relative w-full h-full col-span-3 col-start-1 row-start-5 rounded-xl bg-violet-400">
             <div ref={divEleme} className="absolute"></div>
             <button onClick={e => handleClickChange(e)}>
                 Я умею менять тебя
