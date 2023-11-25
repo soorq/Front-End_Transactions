@@ -11,11 +11,15 @@ const menu: TypeMenuItems[] = [
 ];
 
 const MainLayout: React.FC = () => {
+    const [open, setOpen] = React.useState(true);
+
+    console.log('render');
+
     return (
         <div className="w-full h-full bg-blue_b">
-            <Header menu={menu} />
+            <Header menu={menu} setSidebarOpen={setOpen} sidebarOpen={open} />
             <div className="min-h-screen">
-                <SideBar />
+                <SideBar open={open} />
                 <Outlet />
             </div>
         </div>

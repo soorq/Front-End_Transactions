@@ -1,19 +1,31 @@
-import { useEffect } from 'react';
-import useLocalStorage from './useLocalS';
+export const useTheme = () => {
+    const stylesheets = {
+        light: '',
+        dark: '',
+    };
 
-const useColorMode = () => {
-    const [colorMode, setColorMode] = useLocalStorage('color-theme', 'light');
+    const systemTheme = () =>
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
 
-    useEffect(() => {
-        const className = 'dark';
-        const bodyClass = window.document.body.classList;
+    const createStylesheetLink = (): HTMLLinkElement => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.id = 'antd-stylesheet';
+        document.head.appendChild(link);
+        return link;
+    };
+    const getTheme = () =>
+        (localStorage.getItem('theme') as Theme) || systemTheme();
+    const getStylesheetLink = (): HTMLLinkElement =>
+        document.head.querySelector('#antd-stylesheet') ||
+        createStylesheetLink();
 
-        colorMode === 'dark'
-            ? bodyClass.add(className)
-            : bodyClass.remove(className);
-    }, [colorMode]);
+    const setTheme = (theme: Theme) => {
+        localStorage.setItem('theme', theme);
+    };
 
-    return [colorMode, setColorMode];
+    return () => setTheme(getTheme() === 'dark' ? 'light' : 'dark');
 };
-
-export default useColorMode;

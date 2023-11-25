@@ -7,6 +7,8 @@ export type TypeMenuItems = {
 
 export type TypeMenuItemsProps = {
     menu: TypeMenuItems[];
+    sidebarOpen: boolean;
+    setSidebarOpen: (arg0: boolean) => void;
 };
 
 export interface SubmenuItem {
